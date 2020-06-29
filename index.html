@@ -1,123 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<!-- 遠端資料套件 -->
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <style>
-    .completed {
-      text-decoration: line-through
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 <body>
-  <div id="app" class="container my-3">
-    <button id="get" class="btn btn-outline-primary">Get</button>
-    <button id="post" class="btn btn-outline-primary">Post</button>
-    <button id="patch" class="btn btn-outline-primary">Patch</button>
-    <button id="delete" class="btn btn-outline-primary">Delete</button>
-  </div>
-  <script>
-
-    document.querySelector('#get').addEventListener('click', getData);
-    document.querySelector('#post').addEventListener('click', postData);
-    document.querySelector('#patch').addEventListener('click', patchData);
-    document.querySelector('#delete').addEventListener('click', deleteData);
-    
-
-    var uuid = '1f1839a8-d78f-4fc7-b088-b55e63cc35a3';
-    var token = '8nj4f1UaMrMdNlhth1JqU0pSspMVyuFbaRgj0Dy8rTHpDQ27rPHOyBoNUfdO';
-    //完整的apipath = 站點/apt/{uuid}/admin/ec/product
-    var apiPath = 'https://course-ec-api.hexschool.io/';
-
-    axios.defaults.headers['Authorization'] = `Bearer ${token}`;
-    // 小心，有錯～，請參考課程影片
-    // var sampleData = {
-    //   title: '好茶',
-    //   category: 'tea',
-    //   content: '內容',
-    //   imageUrl: [
-    //     'https://images.unsplash.com/photo-1587918515749-a2a68b40a124?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
-    //   ],
-    //   enabled: true,
-    //   origin_price: 100,
-    //   price: 90,
-    //   unit: '杯',
-    // };
-
-    // axios.defaults.headers['Authorization']
-    // axios 設定說明：https://github.com/axios/axios#config-defaults
-
-    function getData() {
-      console.log('getData');
-      var api = `${apiPath}api/${uuid}/admin/ec/products`;
-      console.log(api);
-      axios.get(api)
-        .then(function(res){
-            console.log(res);
-        })
-    }
-
-    function postData() {
-      console.log('postData');
-      var api = `${apiPath}api/${uuid}/admin/ec/product`;
-      var data = {
-        title: '多多綠',
-        category: 'tea',
-        content: '養樂多+綠茶',
-        description:'描述',
-        imageUrl: [
-        'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.chingshin.tw%2Fproduct%2Fyogurt-green-tea&psig=AOvVaw25ZDvjJMa5Un56hryHQ68I&ust=1593408449234000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIjxqJfjo-oCFQAAAAAdAAAAABAD'
-      ],
-        enabled: true,
-        origin_price: 100,
-        price: 90,
-        unit: '杯',
-      };
-      console.log(api,data);
-      axios.post(api,data)
-        .then(function(res){
-            console.log(res);
-        })
-    }
-
-    function patchData() {
-      console.log('patchData');
-      var api = `${apiPath}api/${uuid}/admin/ec/product/biK0EBQl647QCVMw9sEKiGhXJGG1Oa5ZUvGWzuavICNEBEAOsVBUpnHbUoVp0R5x`;
-      var data = {
-        title: '更新',
-        category: 'tea',
-        content: '養樂多+綠茶',
-        description:'描述',
-        imageUrl: [
-        'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.chingshin.tw%2Fproduct%2Fyogurt-green-tea&psig=AOvVaw25ZDvjJMa5Un56hryHQ68I&ust=1593408449234000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIjxqJfjo-oCFQAAAAAdAAAAABAD'
-      ],
-        enabled: true,
-        origin_price: 150,
-        price: 100,
-        unit: '杯',
-      };
-      console.log(api,data);
-      axios.patch(api,data)
-        .then(function(res){
-            console.log(res);
-        })
-    }
-    
-    function deleteData() {
-      console.log('deleteData');
-      var api = `${apiPath}api/${uuid}/admin/ec/product/7KXqEBjfWDypbAC9Z3uQNaI2kzbrTgm6AJdFnGIyiOF14cxezlwFvE2Lrm21pfOp`;
-      console.log(api);
-      axios.delete(api)
-        .then(function(res){
-            console.log(res);
-        })
-    }
-
-  </script>
+<div class="container">
+    <h2>產品列表</h2>
+    <div id="app" class="card-columns">
+        
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script src="all.js"></script>
 </body>
 </html>
