@@ -8,7 +8,8 @@ var obj = {
     },
     getData:function(){
         var vm = this;
-        var url = "https://course-ec-api.hexschool.io/api/1f1839a8-d78f-4fc7-b088-b55e63cc35a3/ec/products";
+        var url = `https://course-ec-api.hexschool.io/api/${vm.data.uuid}/ec/products`;
+        console.log(url);
         axios.get(url)
           .then(
             function(response){
